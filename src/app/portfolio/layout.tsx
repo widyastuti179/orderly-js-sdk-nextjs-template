@@ -2,7 +2,7 @@
 import React, { ReactNode, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { PortfolioLayoutWidget } from "@orderly.network/portfolio";
-import { FooterUrls, MainNavProps } from "@/config";
+import config from "@/config";
 import { useNav } from "@/hooks/useNav";
 
 export default function PortfolioLayout(props: { children: ReactNode }) {
@@ -18,20 +18,18 @@ export default function PortfolioLayout(props: { children: ReactNode }) {
   }, [pathname]);
 
   return (
-    <div className="orderly-sdk-layout">
-      <PortfolioLayoutWidget
-        footerConfig={FooterUrls}
-        mainNavProps={{
-          ...MainNavProps,
-          initialMenu: "/portfolio",
-        }}
-        routerAdapter={{
-          onRouteChange,
-          currentPath,
-        }}
-      >
-        {props.children}
-      </PortfolioLayoutWidget>
-    </div>
+    <PortfolioLayoutWidget
+      footerProps={config.footerProps}
+      mainNavProps={{
+        ...config.mainNavProps,
+        initialMenu: "/portfolio",
+      }}
+      routerAdapter={{
+        onRouteChange,
+        currentPath,
+      }}
+    >
+      {props.children}
+    </PortfolioLayoutWidget>
   );
 }

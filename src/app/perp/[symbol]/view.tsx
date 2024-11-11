@@ -4,12 +4,7 @@ import { useRouter } from "next/navigation";
 import { API } from "@orderly.network/types";
 import { Scaffold } from "@orderly.network/ui-scaffold";
 import { TradingPage, TradingPageProps } from "@orderly.network/trading";
-import {
-  FooterUrls,
-  MainNavProps,
-  SharePnLConfig,
-  TradingViewConfig,
-} from "@/config";
+import config from "@/config";
 import { useNav } from "@/hooks/useNav";
 import { updateSymbol } from "@/storage";
 
@@ -36,11 +31,8 @@ export default function PerpView(props: PerpViewProps) {
   return (
     <Scaffold
       leftSidebar={null}
-      mainNavProps={MainNavProps}
-      footerConfig={FooterUrls}
-      classNames={{
-        footer: "oui-bg-base-10",
-      }}
+      mainNavProps={config.mainNavProps}
+      footerProps={config.footerProps}
       routerAdapter={{
         onRouteChange,
         currentPath: "/",
@@ -48,8 +40,8 @@ export default function PerpView(props: PerpViewProps) {
     >
       <TradingPage
         symbol={symbol}
-        tradingViewConfig={TradingViewConfig}
-        sharePnLConfig={SharePnLConfig}
+        tradingViewConfig={config.tradingViewConfig}
+        sharePnLConfig={config.sharePnLConfig}
         onSymbolChange={onSymbolChange}
       />
     </Scaffold>

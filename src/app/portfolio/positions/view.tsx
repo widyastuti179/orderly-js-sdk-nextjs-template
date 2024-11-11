@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { API } from "@orderly.network/types";
 import { Box } from "@orderly.network/ui";
 import { PositionsModule } from "@orderly.network/portfolio";
-import { SharePnLConfig } from "@/config";
+import config from "@/config";
 import { useTradingLocalStorage } from "@orderly.network/trading";
 import { updateSymbol } from "@/storage";
 
@@ -36,7 +36,7 @@ export default function PositionsView() {
       }}
     >
       <PositionsModule.PositionsPage
-        sharePnLConfig={SharePnLConfig}
+        sharePnLConfig={config.sharePnLConfig}
         pnlNotionalDecimalPrecision={local.pnlNotionalDecimalPrecision}
         calcMode={local.unPnlPriceBasis}
         onSymbolChange={onSymbolChange}

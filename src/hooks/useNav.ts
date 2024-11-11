@@ -7,7 +7,7 @@ export function useNav() {
   const router = useRouter();
 
   const onRouteChange = useCallback((option: RouteOption) => {
-    console.log("onRouteChange", option);
+
     if (option.target === "_blank") {
       window.open(option.href);
       return;
