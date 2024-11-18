@@ -1,17 +1,17 @@
 "use client";
-import React, { PropsWithChildren } from "react";
+import React, { FC, ReactNode } from "react";
 import { WalletConnectorProvider } from "@orderly.network/wallet-connector";
 import { OrderlyAppProvider } from "@orderly.network/react-app";
 import config from "@/config";
 
-const OrderlyContainer: React.FC<PropsWithChildren<{}>> = (props) => {
+const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
   return (
     <WalletConnectorProvider>
       <OrderlyAppProvider
         brokerId="orderly"
         brokerName="Orderly"
         networkId="testnet"
-        appIcons={config.appIcons}
+        appIcons={config.orderlyAppProvider.appIcons}
       >
         {props.children}
       </OrderlyAppProvider>
@@ -19,4 +19,4 @@ const OrderlyContainer: React.FC<PropsWithChildren<{}>> = (props) => {
   );
 };
 
-export default OrderlyContainer;
+export default OrderlyProvider;
