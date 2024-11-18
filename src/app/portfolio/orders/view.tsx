@@ -15,6 +15,7 @@ export default function OrdersView() {
         minHeight: 379,
         maxHeight: 2560,
         overflow: "hidden",
+        // Make the table scroll instead of the page scroll
         height: "calc(100vh - 48px - 29px - 48px)",
       }}
     >

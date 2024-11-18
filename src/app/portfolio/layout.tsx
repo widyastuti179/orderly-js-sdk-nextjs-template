@@ -19,9 +19,9 @@ export default function PortfolioLayout(props: { children: ReactNode }) {
 
   return (
     <PortfolioLayoutWidget
-      footerProps={config.footerProps}
+      footerProps={config.scaffold.footerProps}
       mainNavProps={{
-        ...config.mainNavProps,
+        ...config.scaffold.mainNavProps,
         initialMenu: "/portfolio",
       }}
       routerAdapter={{

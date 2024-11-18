@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { OrderlyContainer } from "@/components/orderlyContainer";
+import OrderlyProvider from "@/components/orderlyProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
       <body>
-        <OrderlyContainer>{children}</OrderlyContainer>
+        <OrderlyProvider>{children}</OrderlyProvider>
       </body>
     </html>
   );

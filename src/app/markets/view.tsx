@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { MarketsHomePage } from "@orderly.network/markets";
 import { Scaffold } from "@orderly.network/ui-scaffold";
+import { MarketsHomePage } from "@orderly.network/markets";
 import config from "@/config";
 import { useNav } from "@/hooks/useNav";
 
@@ -10,12 +10,11 @@ export default function MarketsView() {
 
   return (
     <Scaffold
-      leftSidebar={null}
       mainNavProps={{
-        ...config.mainNavProps,
+        ...config.scaffold.mainNavProps,
         initialMenu: "/markets",
       }}
-      footerProps={config.footerProps}
+      footerProps={config.scaffold.footerProps}
       routerAdapter={{
         onRouteChange,
       }}

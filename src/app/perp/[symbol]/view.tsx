@@ -30,9 +30,8 @@ export default function PerpView(props: PerpViewProps) {
 
   return (
     <Scaffold
-      leftSidebar={null}
-      mainNavProps={config.mainNavProps}
-      footerProps={config.footerProps}
+      mainNavProps={config.scaffold.mainNavProps}
+      footerProps={config.scaffold.footerProps}
       routerAdapter={{
         onRouteChange,
         currentPath: "/",
@@ -40,9 +39,9 @@ export default function PerpView(props: PerpViewProps) {
     >
       <TradingPage
         symbol={symbol}
-        tradingViewConfig={config.tradingViewConfig}
-        sharePnLConfig={config.sharePnLConfig}
         onSymbolChange={onSymbolChange}
+        tradingViewConfig={config.tradingPage.tradingViewConfig}
+        sharePnLConfig={config.tradingPage.sharePnLConfig}
       />
     </Scaffold>
   );

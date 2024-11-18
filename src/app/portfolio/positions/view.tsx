@@ -32,11 +32,12 @@ export default function PositionsView() {
         minHeight: 379,
         maxHeight: 2560,
         overflow: "hidden",
+        // Make the table scroll instead of the page scroll
         height: "calc(100vh - 48px - 29px - 48px)",
       }}
     >
       <PositionsModule.PositionsPage
-        sharePnLConfig={config.sharePnLConfig}
+        sharePnLConfig={config.tradingPage.sharePnLConfig}
         pnlNotionalDecimalPrecision={local.pnlNotionalDecimalPrecision}
         calcMode={local.unPnlPriceBasis}
         onSymbolChange={onSymbolChange}
