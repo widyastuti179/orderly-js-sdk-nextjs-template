@@ -1,6 +1,7 @@
 import { TradingPageProps } from "@orderly.network/trading";
 import { FooterProps, MainNavWidgetProps } from "@orderly.network/ui-scaffold";
 import { AppLogos } from "@orderly.network/react-app";
+import { OrderlyActiveIcon, OrderlyIcon } from "./components/icons/orderly";
 
 export type OrderlyConfig = {
   orderlyAppProvider: {
@@ -13,21 +14,38 @@ export type OrderlyConfig = {
   tradingPage: {
     tradingViewConfig: TradingPageProps["tradingViewConfig"];
     sharePnLConfig: TradingPageProps["sharePnLConfig"];
-    referral?: any;
   };
 };
 
 const config: OrderlyConfig = {
   scaffold: {
     mainNavProps: {
+      initialMenu: "/",
       mainMenus: [
         { name: "Trading", href: "/" },
         { name: "Portfolio", href: "/portfolio" },
         { name: "Markets", href: "/markets" },
-        // TODO
-        { name: "Trading Reward", href: "/tradingReward" },
       ],
-      initialMenu: "/",
+      campaigns: {
+        name: "Reward",
+        href: "/rewards",
+        children: [
+          {
+            name: "Trading rewards",
+            href: "https://app.orderly.network/tradingRewards",
+            description: "Trade with Orderly to earn ORDER",
+            icon: <OrderlyIcon size={14} />,
+            activeIcon: <OrderlyActiveIcon size={14} />,
+          },
+
+          {
+            name: "Staking",
+            href: "https://app.orderly.network/staking",
+            description: "Stake ORDER/esORDER to acquire VALOR",
+            target: "_blank",
+          },
+        ],
+      },
     },
     footerProps: {
       telegramUrl: "https://orderly.network",
