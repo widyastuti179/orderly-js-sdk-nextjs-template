@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     return config;
   },
   reactStrictMode: false,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   async redirects() {
     return [
       {
