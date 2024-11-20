@@ -57,12 +57,12 @@ const config: OrderlyConfig = {
         "/pnl/poster_bg_2.png",
         "/pnl/poster_bg_3.png",
         "/pnl/poster_bg_4.png",
-        "/pnl/poster_bg_5.png",
       ],
+
       color: "rgba(255, 255, 255, 0.98)",
-      profitColor: "rgba(255,68,124,1)",
-      lossColor: "rgba(0,180,158,1)",
-      brandColor: "rgba(51,95,252,1)",
+      profitColor: "rgba(41, 223, 169, 1)",
+      lossColor: "rgba(245, 97, 139, 1)",
+      brandColor: "rgba(255, 255, 255, 0.98)",
 
       // ref
       refLink: "https://orderly.network",
