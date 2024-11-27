@@ -1,5 +1,6 @@
 {
   "name": "orderly-js-sdk-nextjs-template",
+  "description": "Template for Orderly SDK v2 based on Next.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
