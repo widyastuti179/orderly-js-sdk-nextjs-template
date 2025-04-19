@@ -4,11 +4,12 @@ import { useRouter } from "next/navigation";
 import { API } from "@orderly.network/types";
 import { Box } from "@orderly.network/ui";
 import { PositionsModule } from "@orderly.network/portfolio";
-import config from "@/config";
 import { useTradingLocalStorage } from "@orderly.network/trading";
 import { updateSymbol } from "@/storage";
+import { useOrderlyConfig } from "@/hooks/useOrderlyConfig";
 
 export default function PositionsView() {
+  const config = useOrderlyConfig();
   const local = useTradingLocalStorage();
   const router = useRouter();
 

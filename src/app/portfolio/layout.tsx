@@ -1,28 +1,35 @@
 "use client";
 import React, { ReactNode, useMemo } from "react";
-import { usePathname } from "next/navigation";
-import { PortfolioLayoutWidget } from "@orderly.network/portfolio";
-import config from "@/config";
+import {
+  PortfolioLayoutWidget,
+  PortfolioLeftSidebarPath,
+} from "@orderly.network/portfolio";
 import { useNav } from "@/hooks/useNav";
+import { usePathWithoutLang } from "@/hooks/usePathWithoutLang";
+import { PathEnum } from "@/constant";
+import { useOrderlyConfig } from "@/hooks/useOrderlyConfig";
 
 export default function PortfolioLayout(props: { children: ReactNode }) {
-  const pathname = usePathname();
+  const config = useOrderlyConfig();
+  const path = usePathWithoutLang();
 
   const { onRouteChange } = useNav();
 
   const currentPath = useMemo(() => {
-    if (pathname.endsWith("/portfolio")) return "/portfolio";
-    if (pathname.endsWith("/portfolio/fee")) return "/portfolio/feeTier";
-    if (pathname.endsWith("/portfolio/api-key")) return "/portfolio/apiKey";
-    return pathname;
-  }, [pathname]);
+    if (path.endsWith(PathEnum.FeeTier))
+      return PortfolioLeftSidebarPath.FeeTier;
+
+    if (path.endsWith(PathEnum.ApiKey)) return PortfolioLeftSidebarPath.ApiKey;
+
+    return path;
+  }, [path]);
 
   return (
     <PortfolioLayoutWidget
       footerProps={config.scaffold.footerProps}
       mainNavProps={{
         ...config.scaffold.mainNavProps,
-        initialMenu: "/portfolio",
+        initialMenu: PathEnum.Portfolio,
       }}
       routerAdapter={{
         onRouteChange,

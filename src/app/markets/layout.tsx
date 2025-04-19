@@ -1,24 +1,10 @@
 "use client";
 import React, { ReactNode } from "react";
-import { Scaffold } from "@orderly.network/ui-scaffold";
-import { useNav } from "@/hooks/useNav";
-import config from "@/config";
+import { BaseLayout } from "@/components/baseLayout";
+import { PathEnum } from "@/constant";
 
 export default function MarketsLayout(props: { children: ReactNode }) {
-  const { onRouteChange } = useNav();
-
   return (
-    <Scaffold
-      mainNavProps={{
-        ...config.scaffold.mainNavProps,
-        initialMenu: "/markets",
-      }}
-      footerProps={config.scaffold.footerProps}
-      routerAdapter={{
-        onRouteChange,
-      }}
-    >
-      {props.children}
-    </Scaffold>
+    <BaseLayout initialMenu={PathEnum.Markets}>{props.children}</BaseLayout>
   );
 }

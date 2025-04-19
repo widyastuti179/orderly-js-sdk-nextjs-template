@@ -2,9 +2,11 @@
 import React, { FC, ReactNode } from "react";
 import { WalletConnectorProvider } from "@orderly.network/wallet-connector";
 import { OrderlyAppProvider } from "@orderly.network/react-app";
-import config from "@/config";
+import { useOrderlyConfig } from "@/hooks/useOrderlyConfig";
 
 const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
+  const config = useOrderlyConfig();
+
   return (
     <WalletConnectorProvider>
       <OrderlyAppProvider
