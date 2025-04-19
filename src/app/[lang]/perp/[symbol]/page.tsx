@@ -9,13 +9,13 @@ type PerpPageProps = {
 export async function generateMetadata({
   params,
 }: PerpPageProps): Promise<Metadata> {
-  const symbol = (await params).symbol;
+  const { symbol } = await params;
   return {
     title: generatePageTitle(formatSymbol(symbol)),
   };
 }
 
 export default async function PerpPage(props: PerpPageProps) {
-  const symbol = (await props.params).symbol;
+  const { symbol } = await props.params;
   return <PerpView symbol={symbol} />;
 }

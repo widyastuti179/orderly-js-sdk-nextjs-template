@@ -5,10 +5,10 @@ import {
   Campaign,
   LeaderboardWidget,
 } from "@orderly.network/trading-leaderboard";
-import { PathEnum } from "../../constant";
+import { PathEnum } from "../../../constant";
 import { i18n } from "@orderly.network/i18n";
 import { useMemo } from "react";
-import { getSymbol } from "../../storage";
+import { getSymbol } from "../../../storage";
 
 const leaderboardCampaigns: Campaign[] = [
   {

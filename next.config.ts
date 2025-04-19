@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-
+import { LocaleEnum } from "@orderly.network/i18n";
 const nextConfig: NextConfig = {
   output: "standalone",
   webpack: (config) => {
@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,
+  },
+  i18n: {
+    locales: Object.values(LocaleEnum),
+    defaultLocale: LocaleEnum.en,
   },
   async redirects() {
     return [
