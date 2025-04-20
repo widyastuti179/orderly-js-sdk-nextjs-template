@@ -3,23 +3,31 @@ import React, { FC, ReactNode } from "react";
 import { WalletConnectorProvider } from "@orderly.network/wallet-connector";
 import { OrderlyAppProvider } from "@orderly.network/react-app";
 import { useOrderlyConfig } from "@/hooks/useOrderlyConfig";
-import { LocaleProvider, LocaleCode, LocaleEnum } from "@orderly.network/i18n";
+import {
+  LocaleProvider,
+  LocaleCode,
+  LocaleEnum,
+  parseI18nLang,
+} from "@orderly.network/i18n";
 import { usePathWithoutLang } from "@/hooks/usePathWithoutLang";
 
 const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
   const config = useOrderlyConfig();
   const path = usePathWithoutLang();
 
+  console.log("window", window.location.pathname);
+
   const onLanguageChanged = async (lang: LocaleCode) => {
     window.history.replaceState({}, "", `/${lang}${path}`);
   };
 
   const loadPath = (lang: LocaleCode) => {
-    if (lang === LocaleEnum.en) {
+    const _lang = parseI18nLang(lang);
+    if (_lang === LocaleEnum.en) {
       // because en is built-in, we need to load the en extend only
-      return `/locales/extend/${lang}.json`;
+      return `/locales/extend/${_lang}.json`;
     }
-    return [`/locales/${lang}.json`, `/locales/extend/${lang}.json`];
+    return [`/locales/${_lang}.json`, `/locales/extend/${_lang}.json`];
   };
 
   return (

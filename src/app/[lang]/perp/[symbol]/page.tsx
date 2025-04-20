@@ -6,10 +6,10 @@ type PerpPageProps = {
   params: Promise<{ symbol: string }>;
 };
 
-export async function generateMetadata({
-  params,
-}: PerpPageProps): Promise<Metadata> {
-  const { symbol } = await params;
+export async function generateMetadata(
+  props: PerpPageProps
+): Promise<Metadata> {
+  const { symbol } = await props.params;
   return {
     title: generatePageTitle(formatSymbol(symbol)),
   };

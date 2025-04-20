@@ -14,7 +14,7 @@ export function usePathWithoutLang() {
   const pathname = usePathname();
 
   return useMemo(() => {
-    let localePath = getLocalePathFromPathname(pathname);
+    const localePath = getLocalePathFromPathname(pathname);
     return localePath ? removeLangPrefix(pathname) : pathname;
   }, [pathname]);
 }

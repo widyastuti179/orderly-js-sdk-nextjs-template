@@ -2,8 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import MarketsView from "./view";
 import { generatePageTitle } from "@/utils";
-import { PathEnum } from "@/constant";
-import { PageTitleMap } from "@/constant";
+import { PathEnum, PageTitleMap } from "@/constant";
 
 export const metadata: Metadata = {
   title: generatePageTitle(PageTitleMap[PathEnum.Markets]),

@@ -5,6 +5,8 @@ import { API } from "@orderly.network/types";
 import { TradingPage, TradingPageProps } from "@orderly.network/trading";
 import { updateSymbol } from "@/storage";
 import { useOrderlyConfig } from "@/hooks/useOrderlyConfig";
+import { PathEnum } from "@/constant";
+import { i18n, parseI18nLang } from "@orderly.network/i18n";
 
 export type PerpViewProps = Pick<TradingPageProps, "symbol">;
 
@@ -22,7 +24,7 @@ export default function PerpView(props: PerpViewProps) {
     (data: API.Symbol) => {
       const symbol = data.symbol;
       setSymbol(symbol);
-      router.push(`/perp/${symbol}`);
+      router.push(`/${parseI18nLang(i18n.language)}${PathEnum.Perp}/${symbol}`);
     },
     [router]
   );

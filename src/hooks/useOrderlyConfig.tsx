@@ -5,7 +5,7 @@ import { RestrictedInfoOptions } from "@orderly.network/hooks";
 import { AppLogos } from "@orderly.network/react-app";
 import { OrderlyActiveIcon, OrderlyIcon } from "../components/icons/orderly";
 import { useTranslation } from "@orderly.network/i18n";
-import { PathEnum } from "../constant";
+import { PathEnum } from "@/constant";
 
 export type OrderlyConfig = {
   orderlyAppProvider: {
@@ -19,7 +19,6 @@ export type OrderlyConfig = {
   tradingPage: {
     tradingViewConfig: TradingPageProps["tradingViewConfig"];
     sharePnLConfig: TradingPageProps["sharePnLConfig"];
-    referral?: any;
   };
 };
 

@@ -7,18 +7,18 @@ export const metadata: Metadata = {
   description: "Orderly SDK template",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type RootLayoutProps = Readonly<{
   children: React.ReactNode;
-}>) {
+}>;
+
+export default async function RootLayout(props: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
       <body>
-        <OrderlyProvider>{children}</OrderlyProvider>
+        <OrderlyProvider>{props.children}</OrderlyProvider>
       </body>
     </html>
   );

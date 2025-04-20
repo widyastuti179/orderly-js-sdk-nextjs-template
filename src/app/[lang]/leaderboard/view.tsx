@@ -1,14 +1,14 @@
 "use client";
+import { useMemo } from "react";
 import { useScaffoldContext } from "@orderly.network/ui-scaffold";
 import { Box, useScreen } from "@orderly.network/ui";
 import {
   Campaign,
   LeaderboardWidget,
 } from "@orderly.network/trading-leaderboard";
-import { PathEnum } from "../../../constant";
-import { i18n } from "@orderly.network/i18n";
-import { useMemo } from "react";
-import { getSymbol } from "../../../storage";
+import { i18n, parseI18nLang } from "@orderly.network/i18n";
+import { getSymbol } from "@/storage";
+import { PathEnum } from "@/constant";
 
 const leaderboardCampaigns: Campaign[] = [
   {
@@ -29,7 +29,7 @@ export default function LeaderboardView() {
 
   const tradingUrl = useMemo(() => {
     const symbol = getSymbol();
-    return `/${i18n.language}${PathEnum.Perp}/${symbol}`;
+    return `/${parseI18nLang(i18n.language)}${PathEnum.Perp}/${symbol}`;
   }, []);
 
   return (
