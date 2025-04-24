@@ -11,15 +11,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/en/perp/PERP_ETH_USDC",
-        permanent: false,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
