@@ -15,8 +15,6 @@ const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
   const config = useOrderlyConfig();
   const path = usePathWithoutLang();
 
-  console.log("window", window.location.pathname);
-
   const onLanguageChanged = async (lang: LocaleCode) => {
     window.history.replaceState({}, "", `/${lang}${path}`);
   };
