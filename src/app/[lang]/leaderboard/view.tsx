@@ -67,7 +67,6 @@ export default function LeaderboardView() {
         href={{
           trading: tradingUrl,
         }}
-        backgroundSrc="/leaderboard/background.jpg"
         className="oui-py-5"
       />
     </Box>
