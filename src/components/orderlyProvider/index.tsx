@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import { WalletConnectorProvider } from "@orderly.network/wallet-connector";
 import { OrderlyAppProvider } from "@orderly.network/react-app";
 import { useOrderlyConfig } from "@/hooks/useOrderlyConfig";
@@ -7,26 +7,36 @@ import {
   LocaleProvider,
   LocaleCode,
   LocaleEnum,
-  parseI18nLang,
+  getLocalePathFromPathname,
+  i18n,
 } from "@orderly.network/i18n";
 import { usePathWithoutLang } from "@/hooks/usePathWithoutLang";
+import { usePathname } from "next/navigation";
 
 const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
   const config = useOrderlyConfig();
   const path = usePathWithoutLang();
+  const pathname = usePathname();
 
   const onLanguageChanged = async (lang: LocaleCode) => {
     window.history.replaceState({}, "", `/${lang}${path}`);
   };
 
   const loadPath = (lang: LocaleCode) => {
-    const _lang = parseI18nLang(lang);
-    if (_lang === LocaleEnum.en) {
+    if (lang === LocaleEnum.en) {
       // because en is built-in, we need to load the en extend only
-      return `/locales/extend/${_lang}.json`;
+      return `/locales/extend/${lang}.json`;
     }
-    return [`/locales/${_lang}.json`, `/locales/extend/${_lang}.json`];
+    return [`/locales/${lang}.json`, `/locales/extend/${lang}.json`];
   };
+
+  useEffect(() => {
+    const lang = getLocalePathFromPathname(pathname);
+    // if url is include lang, and url lang is not the same as the i18n language, change the i18n language
+    if (lang && lang !== i18n.language) {
+      i18n.changeLanguage(lang);
+    }
+  }, [pathname]);
 
   return (
     <LocaleProvider
