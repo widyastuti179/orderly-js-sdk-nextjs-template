@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run copyLocales && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "copyLocales": "node scripts/copyLocales.js"
   },
   "dependencies": {
     "@orderly.network/affiliate": "2.1.1",
@@ -30,6 +31,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "fs-extra": "^11.3.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
     "typescript": "^5"
