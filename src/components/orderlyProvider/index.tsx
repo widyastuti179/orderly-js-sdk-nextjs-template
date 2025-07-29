@@ -12,11 +12,13 @@ import {
 } from "@orderly.network/i18n";
 import { usePathWithoutLang } from "@/hooks/usePathWithoutLang";
 import { usePathname } from "next/navigation";
+import { useNav } from "@/hooks/useNav";
 
 const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
   const config = useOrderlyConfig();
   const path = usePathWithoutLang();
   const pathname = usePathname();
+  const { onRouteChange } = useNav();
 
   const onLanguageChanged = async (lang: LocaleCode) => {
     window.history.replaceState({}, "", `/${lang}${path}`);
@@ -49,6 +51,7 @@ const OrderlyProvider: FC<{ children: ReactNode }> = (props) => {
           brokerName="Orderly"
           networkId="testnet"
           appIcons={config.orderlyAppProvider.appIcons}
+          onRouteChange={onRouteChange}
         >
           {props.children}
         </OrderlyAppProvider>
