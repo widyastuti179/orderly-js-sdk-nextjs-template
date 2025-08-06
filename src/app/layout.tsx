@@ -15,7 +15,7 @@ export default async function RootLayout(props: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
       </head>
       <body>
         <OrderlyProvider>{props.children}</OrderlyProvider>
