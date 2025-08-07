@@ -1,5 +1,5 @@
 # https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
-FROM node:18-slim AS base
+FROM node:20-slim AS base
 
 FROM base AS deps
 WORKDIR /app
